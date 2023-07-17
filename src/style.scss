@@ -1,0 +1,232 @@
+$backgroundC: #100f0f;
+$mainC: #0f3d3e;
+$fontC: #f1f1f1;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300&display=swap');
+
+// @font-face {
+//   font-family: 'notoserif';
+//   src: url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500&display=swap');
+// }
+
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+
+  font-family: 'Noto Serif JP', serif;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+}
+#canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  flex: 1;
+}
+.lyric {
+  position: absolute;
+  top: 20%;
+  z-index: 2;
+  color: $fontC;
+  font-size: 20px;
+  writing-mode: vertical-rl;
+  right: 24px;
+}
+
+.progress {
+  width: 100%;
+  height: 3px;
+  background-color: $mainC;
+  // cursor: pointer;
+
+  .status {
+    height: 100%;
+    width: 0;
+    background-color: $fontC;
+  }
+}
+.footer {
+  width: calc(100% - 48px);
+  height: 60px;
+  padding: 0 24px;
+  background: $backgroundC;
+  font-size: 18px;
+
+  color: #f1f1f1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  > div {
+    width: 100%;
+  }
+}
+
+// title
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.title,
+.composer {
+  padding-right: 24px;
+}
+.btn-container {
+  position: relative;
+}
+.menu-btn {
+  background-color: $backgroundC;
+  border: none;
+  outline: none;
+  position: relative;
+  color: $fontC;
+  cursor: pointer;
+  vertical-align: middle;
+  &:before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border: 0;
+    border-top: solid 2px $fontC;
+    border-right: solid 2px $fontC;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -4px;
+    transform: rotate(-45deg);
+  }
+}
+.submenu {
+  display: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  background-color: $mainC;
+  opacity: 0.9;
+  position: absolute;
+  bottom: 0;
+  overflow: auto;
+  bottom: 42px;
+  border-radius: 4px;
+  z-index: 3;
+  li {
+    display: block;
+    color: $fontC;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-bottom: 1px solid $mainC;
+    cursor: pointer;
+    &:last-child {
+      border-bottom: none;
+    }
+    &:hover {
+      color: #100f0f;
+      background-color: #ffcb42;
+    }
+  }
+}
+
+// control
+.control {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+.time {
+  text-align: right;
+}
+
+// https://ui-snippets.dev/
+@keyframes donut-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.load-btn {
+  display: inline-block;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: $fontC;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: donut-spin 1.2s linear infinite;
+  background-color: $backgroundC;
+}
+
+.start-btn {
+  border-style: solid;
+  border-width: 10px 0 10px 20px;
+  border-color: transparent transparent transparent $fontC;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  background-color: $backgroundC;
+  cursor: pointer;
+}
+
+$size: 22px;
+.pause-btn {
+  background-color: $backgroundC;
+  position: relative;
+  display: inline-block;
+  border: none;
+  width: ($size + 10);
+  height: $size;
+  cursor: pointer;
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: ' ';
+    height: $size;
+    width: $size * 0.3;
+    left: 0;
+    top: 0;
+    background-color: $fontC;
+  }
+  &:after {
+    left: ($size * 0.7);
+  }
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 2;
+  &.visible {
+    display: block;
+  }
+}
+
+//
+@media screen and (max-width: 900px) {
+  .composer {
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  .title {
+    font-size: 14px;
+  }
+}
