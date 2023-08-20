@@ -3,7 +3,7 @@
 TextAlive App Api を用いたリリックアプリです。  
 本リポジトリは、「マジカルミライ 2023」 プログラミング・コンテスト応募作品となります。
 
-![img](https://github.com/hittaito/textalive-2023/assets/61876075/cfe25f56-bbc2-4ffb-8bb8-4fc131d74705)
+![img](https://github.com/hittaito/textalive-2023/assets/61876075/e78e8ed9-6b9e-4f8b-b124-72ebb8eaa38c))
 
 ## 開発
 
